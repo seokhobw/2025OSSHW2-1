@@ -1,0 +1,40 @@
+<form>
+
+  <fieldset>
+    <legend>Billing Info</legend>
+
+    <label>First name: <input type="text" name="firstName"></label><br><br>
+    <label>Last name: <input type="text" name="lastName"></label><br><br>
+    <label>Birth date: <input type="date" name="dob"></label><br><br> <!-- ✅ date 추가 -->
+
+    <label>Email: <input type="text" name="email" placeholder="you@example.com"></label><br><br>
+
+    <label>Country:
+      <select name="country">
+        <optgroup label="Asia"> <!-- ✅ optgroup 사용 (선택) -->
+          <option value="korea">Korea</option>
+          <option value="japan">Japan</option>
+        </optgroup>
+        <optgroup label="America">
+          <option value="us">United States</option>
+        </optgroup>
+      </select>
+    </label><br><br>
+
+    <label>Favorite color: <input type="color" name="favcolor"></label><br><br> <!-- ✅ color (선택) -->
+
+    <label>Comments:<br>
+      <textarea name="comments" rows="4" cols="50" placeholder="Any comments..."></textarea>
+    </label><br><br>
+  </fieldset>
+
+  <fieldset>
+    <legend>Payment</legend>
+    <label><input type="radio" name="paymentMethod" value="credit" checked> Credit card</label><br>
+    <label><input type="radio" name="paymentMethod" value="paypal"> PayPal</label><br><br>
+    <label><input type="checkbox" name="sameAddress"> Same as billing address</label><br>
+    <label><input type="checkbox" name="saveInfo"> Save this info</label><br><br>
+  </fieldset>
+
+  <button type="submit">Submit</button>
+</form>
