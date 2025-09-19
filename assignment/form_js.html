@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form with JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f4f4f4;
+    }
+
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="color"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+    fieldset {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+
+    legend {
+      font-weight: bold;
+      padding: 0 8px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+
+  <script>
+    function validateForm() {
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const dob = document.getElementById("dob").value;
+
+      if (firstName === "" || lastName === "") {
+        alert("이름을 모두 입력해주세요.");
+        return false;
+      }
+
+      if (!email.includes("@")) {
+        alert("올바른 이메일 형식을 입력해주세요.");
+        return false;
+      }
+
+      if (!dob) {
+        alert("생년월일을 선택해주세요.");
+        return false;
+      }
+
+      return confirm("제출하시겠습니까?");
+    }
+
+    function emailHint() {
+      const emailInput = document.getElementById("email");
+      emailInput.style.borderColor = "blue";
+    }
+
+    function resetEmailStyle() {
+      const emailInput = document.getElementById("email");
+      emailInput.style.borderColor = "#ccc";
+    }
+
+    function onCountryChange(select) {
+      alert("선택한 국가: " + select.value);
+    }
+
+    function keyPressed() {
+      console.log("키보드 입력 감지됨");
+    }
+  </script>
+</head>
+
+<body>
+
+  <form onsubmit="return validateForm()">
+
+    <fieldset>
+      <legend>Billing Info</legend>
+
+      <label for="firstName">First name:</label>
+      <input type="text" name="firstName" id="firstName" onkeydown="keyPressed()">
+
+      <label for="lastName">Last name:</label>
+      <input type="text" name="lastName" id="lastName">
+
+      <label for="dob">Birth date:</label>
+      <input type="date" name="dob" id="dob">
+
+      <label for="email">Email:</label>
+      <input type="text" name="email" id="email"
+             placeholder="you@example.com"
+             onmouseover="emailHint()" onmouseout="resetEmailStyle()">
+
+      <label for="country">Country:</label>
+      <select name="country" id="country" onchange="onCountryChange(this)">
+        <optgroup label="Asia">
+          <option value="korea">Korea</option>
+          <option value="japan">Japan</option>
+        </optgroup>
+        <optgroup label="America">
+          <option value="us">United States</option>
+        </optgroup>
+      </select>
+
+      <label for="favcolor">Favorite color:</label>
+      <input type="color" name="favcolor" id="favcolor">
+
+      <label for="comments">Comments:</label>
+      <textarea name="comments" id="comments" rows="4" cols="50" placeholder="Any comments..."></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>Payment</legend>
+      <label><input type="radio" name="paymentMethod" value="credit" checked> Credit card</label>
+      <label><input type="radio" name="paymentMethod" value="paypal"> PayPal</label>
+
+      <label><input type="checkbox" name="sameAddress"> Same as billing address</label>
+      <label><input type="checkbox" name="saveInfo"> Save this info</label>
+    </fieldset>
+
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>
