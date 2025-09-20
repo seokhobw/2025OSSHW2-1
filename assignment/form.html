@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Web page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f4f4f4;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      width: 300px;
+    }
+
+    button {
+      padding: 8px 16px;
+      margin-left: 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #addBtn {
+      background-color: blue;
+      color: white;
+    }
+
+    #deleteBtn {
+      background-color: darkgreen;
+      color: white;
+    }
+
+    ul {
+      margin-top: 20px;
+    }
+
+    li {
+      margin: 4px 0;
+    }
+  </style>
+
+  <script>
+    window.onload = function () {
+      const input = document.getElementById("itemInput");
+      const addBtn = document.getElementById("addBtn");
+      const deleteBtn = document.getElementById("deleteBtn");
+      const list = document.getElementById("itemList");
+
+      // 추가 버튼 클릭 시
+      addBtn.onclick = function () {
+        const text = input.value.trim();
+
+        if (text === "") {
+          alert("추가할 내용을 입력하세요!");
+          return;
+        }
+
+        // 쉼표(,)로 여러 개 아이템 입력 가능
+        const items = text.split(",");
+        items.forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = item.trim();
+          if (li.textContent !== "") {
+            list.appendChild(li);
+          }
+        });
+
+        input.value = ""; // 입력창 초기화
+      };
+
+      // 삭제 버튼 클릭 시
+      deleteBtn.onclick = function () {
+        if (list.children.length === 0) {
+          alert("삭제할 항목이 없습니다!");
+        } else {
+          list.innerHTML = "";
+        }
+      };
+    };
+  </script>
+</head>
+
+<body>
+  <h1>Dynamic Web page</h1>
+
+  <input type="text" id="itemInput" placeholder="apple, banana, kiwi">
+  <button id="addBtn">추가</button>
+  <button id="deleteBtn">삭제</button>
+
+  <ul id="itemList"></ul>
+</body>
+</html>
