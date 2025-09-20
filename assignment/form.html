@@ -28,12 +28,12 @@
       font-weight: bold;
     }
 
-    #addBtn {
+    #btn1 {
       background-color: blue;
       color: white;
     }
 
-    #deleteBtn {
+    #btn2 {
       background-color: darkgreen;
       color: white;
     }
@@ -49,39 +49,33 @@
 
   <script>
     window.onload = function () {
-      const input = document.getElementById("itemInput");
-      const addBtn = document.getElementById("addBtn");
-      const deleteBtn = document.getElementById("deleteBtn");
-      const list = document.getElementById("itemList");
+      let a = document.getElementById("txt");
+      let b = document.getElementById("btn1");
+      let c = document.getElementById("btn2");
+      let d = document.getElementById("list");
 
-      // 추가 버튼 클릭 시
-      addBtn.onclick = function () {
-        const text = input.value.trim();
-
-        if (text === "") {
+      b.onclick = function () {
+        let e = a.value.trim();
+        if (e === "") {
           alert("추가할 내용을 입력하세요!");
           return;
         }
-
-        // 쉼표(,)로 여러 개 아이템 입력 가능
-        const items = text.split(",");
-        items.forEach(item => {
-          const li = document.createElement("li");
-          li.textContent = item.trim();
-          if (li.textContent !== "") {
-            list.appendChild(li);
+        let f = e.split(",");
+        f.forEach(x => {
+          let g = document.createElement("li");
+          g.textContent = x.trim();
+          if (g.textContent !== "") {
+            d.appendChild(g);
           }
         });
-
-        input.value = ""; // 입력창 초기화
+        a.value = "";
       };
 
-      // 삭제 버튼 클릭 시
-      deleteBtn.onclick = function () {
-        if (list.children.length === 0) {
+      c.onclick = function () {
+        if (d.children.length === 0) {
           alert("삭제할 항목이 없습니다!");
         } else {
-          list.innerHTML = "";
+          d.innerHTML = "";
         }
       };
     };
@@ -91,10 +85,10 @@
 <body>
   <h1>Dynamic Web page</h1>
 
-  <input type="text" id="itemInput" placeholder="apple, banana, kiwi">
-  <button id="addBtn">추가</button>
-  <button id="deleteBtn">삭제</button>
+  <input type="text" id="txt" placeholder="apple, banana, kiwi">
+  <button id="btn1">추가</button>
+  <button id="btn2">삭제</button>
 
-  <ul id="itemList"></ul>
+  <ul id="list"></ul>
 </body>
 </html>
