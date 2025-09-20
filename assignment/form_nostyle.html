@@ -1,8 +1,6 @@
 <form>
 
   <fieldset>
-
-    
     <legend>Billing Info</legend>
 
     <label>First name: <input type="text" name="firstName"></label><br><br>
@@ -11,8 +9,9 @@
 
     <label>Email: <input type="text" name="email" placeholder="you@example.com"></label><br><br>
 
-    <label>Country:
+    <label>Phone: <input type="tel" name="phone" placeholder="010-1234-5678"></label><br><br>
 
+    <label>Country:
       <select name="country">
         <optgroup label="Asia"> 
           <option value="korea">Korea</option>
@@ -20,8 +19,6 @@
         </optgroup>
         <optgroup label="America">
           <option value="us">United States</option>
-
-
         </optgroup>
       </select>
     </label><br><br>
@@ -31,23 +28,16 @@
     <label>Comments:<br>
       <textarea name="comments" rows="4" cols="50" placeholder="Any comments..."></textarea>
     </label><br><br>
-
-
   </fieldset>
 
   <fieldset>
     <legend>Payment</legend>
 
-
     <label><input type="radio" name="paymentMethod" value="credit" checked> Credit card</label><br>
     <label><input type="radio" name="paymentMethod" value="paypal"> PayPal</label><br><br>
     <label><input type="checkbox" name="sameAddress"> Same as billing address</label><br>
     <label><input type="checkbox" name="saveInfo"> Save this info</label><br><br>
-
-
   </fieldset>
 
   <button type="submit">Submit</button>
-
-
 </form>
